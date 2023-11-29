@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme-Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="main-layout">
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    <header class="main-header">
+        <div class="logo">memegen</div>
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li onclick="onSelectPage(this)"><a href="#">Gallery</a></li>
+                <li onclick="onSelectPage(this)"><a href="#">Memes</a></li>
+                <li onclick="onSelectPage(this)"><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+    </header>
+    <main class="main-gallery">
+        <section class="gallery-container">
+            <img onclick="onSelectImg(this)" src="meme-imgs/meme-imgs (square)/1.jpg" alt="">
+            <img onclick="onSelectImg(this)" src="meme-imgs/meme-imgs (square)/2.jpg" alt="">
+        </section>
+    </main>
+
+
+    <script src="js/storage.service.js"></script>
+    <script src="js/utils.service.js"></script>
+    <script src="js/meme-services.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+
+</html>
