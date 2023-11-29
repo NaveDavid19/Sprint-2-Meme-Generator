@@ -1,5 +1,7 @@
 'use strict'
-let gMemeId = 1
+let gMemeId = 0
+let gPosY = 10
+
 
 let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: `meme-imgs/meme-imgs (square)/2.jpg`, keywords: ['trump'] }]
 
@@ -11,7 +13,8 @@ let gMeme = {
             id: gMemeId,
             txt: undefined,
             size: 20,
-            color: 'blue'
+            color: 'blue',
+            posY: gPosY
         },
     ]
 }
@@ -28,24 +31,24 @@ function setImg(imgId) {
 }
 
 function setTextColor(color) {
-    gMeme.lines[0].color = color
+    gMeme.lines[gMemeId].color = color
 }
 
 function setLineTxt(txt) {
-    gMeme.lines[0].txt = txt
+    gMeme.lines[gMemeId].txt = txt
 }
 
 
 function increaseFont() {
     let currFont = gCtx.font.substring(0, gCtx.font.indexOf('px'))
     currFont++
-    gMeme.lines[0].size = currFont
+    gMeme.lines[gMemeId].size = currFont
 }
 
 function decreaseFont() {
     let currFont = gCtx.font.substring(0, gCtx.font.indexOf('px'))
     currFont--
-    gMeme.lines[0].size = currFont
+    gMeme.lines[gMemeId].size = currFont
 }
 
 // function selectedLineIdx(lineId) {
@@ -54,11 +57,13 @@ function decreaseFont() {
 
 function addLine() {
     gMemeId++
+    gPosY += 20
     gMeme.lines.push({
         id: gMemeId,
         txt: undefined,
         size: 20,
-        color: 'blue'
+        color: 'blue',
+        posY: gPosY
     },)
 }
 

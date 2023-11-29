@@ -15,8 +15,11 @@ function renderMeme() {
     if (imgUrl) {
         gCtx.drawImage(imgUrl, 0, 0, gElCanvas.width, gElCanvas.height)
     }
-    if (meme.lines[0].txt && imgUrl) {
-        drawText(meme.lines[0].txt, gElCanvas.width / 2, 30, meme.lines[0].size, meme.lines[0].color)
+    if (meme.lines[gMemeId].txt && imgUrl) {
+        meme.lines.forEach(function (lineProp) {
+            drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
+        })
+        // drawText(meme.lines[gMemeId].txt, gElCanvas.width / 2, 30, meme.lines[gMemeId].size, meme.lines[gMemeId].color)
     }
 }
 
@@ -57,7 +60,7 @@ function onincreaseFont() {
 
 function onAddLine() {
     addLine()
-    renderMeme()
+    // renderMeme()
 }
 function drawText(text, x, y, size, color) {
     gCtx.lineWidth = 2
