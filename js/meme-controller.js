@@ -1,15 +1,31 @@
 'use strict'
 
-let gElCanvas
-let gCtx
+let gElCanvas;
+let gCtx;
 
 function onInit() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
+    gElCanvas = document.querySelector('canvas');
+    gCtx = gElCanvas.getContext('2d');
+    renderGallery()
 }
 
-function renderMeme(elImg) {
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+function renderMeme() {
+    let meme = getMeme()
+    let imgUrl = getImg(meme.selectedImgId)
+    gCtx.drawImage(imgUrl, 0, 0, gElCanvas.width, gElCanvas.height)
+    if (meme.lines[0].txt) {
+        drawText(meme.lines[0].txt, gElCanvas.width / 2, 30)
+    }
+}
+
+function getImg(imgId) {
+    return document.querySelector(`[data-id="${imgId}"]`);
+}
+
+function onSelectImg(elImg) {
+    let currImgId = elImg.dataset.id
+    setImg(+currImgId)
+    renderMeme()
 }
 
 
@@ -22,5 +38,10 @@ function drawText(text, x, y) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
+}
+
+function onTextChange(txt) {
+    setLineTxt(txt)
+    renderMeme()
 }
 

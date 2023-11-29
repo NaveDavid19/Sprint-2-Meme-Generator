@@ -1,31 +1,35 @@
 'use strict'
 
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
+let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: 'meme-imgs/meme-imgs (square)/2.jpg', keywords: ['trump'] }]
+
+let gMeme = {
+    selectedImgId: undefined,
+    selectedLineIdx: undefined,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
-            color: 'red'
+            txt: undefined,
+            size: undefined,
+            color: undefined,
         }
     ]
 }
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
-function getMeme(imgUrl) {
-    let currImgIdx = gImgs.findIndex(img => img.url === imgUrl)
-    let currImg = gImgs[currImgIdx]
-    return currImg
+// let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+
+function getMeme() {
+    return gMeme
+}
+
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
 }
 
 
 
-function setLineTxt(word) {
-    drawText(word, gElCanvas.width / 2, 30);
-
+function setLineTxt(txt) {
+    gMeme.lines[0].txt = txt
 }
 
 
