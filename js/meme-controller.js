@@ -58,9 +58,17 @@ function onincreaseFont() {
 //     renderMeme()
 // }
 
+
+
+function onSwitchLine() {
+    var currLine = switchLine()
+    gCtx.rect(20, 20, gElCanvas.width / 2, gMeme.lines[currLine].posY + 20);
+    gCtx.stroke();
+    // renderMeme()
+}
+
 function onAddLine() {
     addLine()
-    // renderMeme()
 }
 function drawText(text, x, y, size, color) {
     gCtx.lineWidth = 2

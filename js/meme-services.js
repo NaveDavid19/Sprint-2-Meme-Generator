@@ -1,13 +1,14 @@
 'use strict'
 let gMemeId = 0
 let gPosY = 10
+let isMax = false
 
 
 let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: `meme-imgs/meme-imgs (square)/2.jpg`, keywords: ['trump'] }]
 
 let gMeme = {
     selectedImgId: undefined,
-    selectedLineIdx: undefined,
+    selectedLineIdx: 0,
     lines: [
         {
             id: gMemeId,
@@ -65,6 +66,18 @@ function addLine() {
         color: 'blue',
         posY: gPosY
     },)
+}
+function switchLine() {
+    if (gMeme.selectedLineIdx < gMeme.lines.length && !isMax) {
+        gMeme.selectedLineIdx += 1
+    } else {
+        isMax = true
+        gMeme.selectedLineIdx -= 1
+        if (gMeme.selectedLineIdx === 0) {
+            isMax = false
+        }
+    }
+    return gMeme.selectedLineIdx
 }
 
 
