@@ -80,3 +80,8 @@ footer {
     text-align: center;
     justify-content: center;
 }
+
+button img {
+    width: 20px;
+    height: 20px;
+}

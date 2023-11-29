@@ -27,12 +27,12 @@
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
             <div class="main-functions">
-                <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this.value)"
-                    onfocus="this.value=''">
+                <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this)">
 
-                <input type="color" name="select-color" onchange="onChangeColor(event)">
-                <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png" alt=""></button>
-                <button onclick="onincreaseFont()"><img src="ICONS/increase font - icon.png" alt=""></button>
+                <input type="color" name="select-color" onchange="onChangeColor(this)">
+                <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"></button>
+                <button onclick="onincreaseFont()"><img src="ICONS/increase font - icon.png"></button>
+                <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
                 <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
             </div>
         </div>
