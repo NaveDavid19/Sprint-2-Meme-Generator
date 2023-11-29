@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body class="main-layout">
-    <div class="main-screen" onclick="toggleMenu()"></div>
-    <header class="main-header">
+<body onload="onInit()" class="main-layout">
+    <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
+    <header class="main-header full">
         <div class="logo">memegen</div>
         <nav class="main-nav">
             <ul class="main-nav-list">
@@ -19,20 +19,43 @@
                 <li onclick="onSelectPage(this)"><a href="#">About</a></li>
             </ul>
         </nav>
-        <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+        <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
     </header>
-    <main class="main-gallery">
-        <section class="gallery-container">
-            <img onclick="onSelectImg(this)" src="meme-imgs/meme-imgs (square)/1.jpg" alt="">
-            <img onclick="onSelectImg(this)" src="meme-imgs/meme-imgs (square)/2.jpg" alt="">
-        </section>
+    <main>
+        <div class="main-gallery">
+            <section class="gallery-container">
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/1.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/2.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/3.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/4.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/5.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/6.jpg" />
+                <img onclick="renderMeme(this)" src="meme-imgs/meme-imgs (square)/7.jpg" />
+            </section>
+        </div>
+        <div class="canvas-container">
+            <canvas width="300" height="300"></canvas>
+            <section class="main-functions">
+                <article> <input type="text" name="add-text" placeholder="Add Text Here"
+                        onchange="setLineTxt(this.value)" onfocus="this.value=''">
+                </article>
+                <article> <input type="color" name="select-color" onchange="onChangeColor(event)"></article>
+                <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+            </section>
+        </div>
     </main>
+    <footer class="footer full">
+        <div class="logo">memegen</div>
+        <small>all rights 2023</small>
+
+    </footer>
 
 
     <script src="js/storage.service.js"></script>
     <script src="js/utils.service.js"></script>
     <script src="js/meme-services.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
 </body>
 
 </html>
