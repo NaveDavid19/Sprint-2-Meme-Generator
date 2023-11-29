@@ -1,7 +1,7 @@
 'use strict'
 
 
-let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: 'meme-imgs/meme-imgs (square)/2.jpg', keywords: ['trump'] }]
+let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: `meme-imgs/meme-imgs (square)/2.jpg`, keywords: ['trump'] }]
 
 let gMeme = {
     selectedImgId: undefined,
@@ -9,7 +9,12 @@ let gMeme = {
     lines: [
         {
             txt: undefined,
-            size: undefined,
+            size: 20,
+            color: undefined,
+        },
+        {
+            txt: undefined,
+            size: 20,
             color: undefined,
         }
     ]
@@ -32,6 +37,20 @@ function setLineTxt(txt) {
     gMeme.lines[0].txt = txt
 }
 
+
+function increaseFont() {
+    var currFont = gCtx.font
+    var nextSize = currFont.substring(0, currFont.indexOf('px'))
+    nextSize++
+    gMeme.lines[0].size = nextSize
+}
+
+function decreaseFont() {
+    var currFont = gCtx.font
+    var nextSize = currFont.substring(0, currFont.indexOf('px'))
+    nextSize--
+    gMeme.lines[0].size = nextSize
+}
 
 
 // function DownloadImg

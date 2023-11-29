@@ -22,21 +22,19 @@
         <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
     </header>
     <main>
-        <div class="main-gallery">
-            <section class="gallery-container">
-                <!-- <img data-id="1" onclick="onSelectImg(this)" src="meme-imgs/meme-imgs (square)/1.jpg" /> -->
-            </section>
+        <div class="gallery-container">
         </div>
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
-            <section class="main-functions">
-                <article> <input type="text" name="add-text" placeholder="Add Text Here"
-                        onchange="onTextChange(this.value)" onfocus="this.value=''">
-                </article>
-                <article> <input type="color" name="select-color" onchange="onChangeColor(event)"></article>
-                <article> <button><img src="ICONS/decrease font - icon.png" alt=""></button>
-                    <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-            </section>
+            <div class="main-functions">
+                <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this.value)"
+                    onfocus="this.value=''">
+
+                <input type="color" name="select-color" onchange="onChangeColor(event)">
+                <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png" alt=""></button>
+                <button onclick="onincreaseFont()"><img src="ICONS/increase font - icon.png" alt=""></button>
+                <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+            </div>
         </div>
     </main>
     <footer class="footer full">
