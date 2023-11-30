@@ -8,7 +8,7 @@ let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['tru
 
 let gMeme = {
     selectedImgId: undefined,
-    selectedLineIdx: 0,
+    selectedLineIdx: -1,
     lines: [
         {
             id: gMemeId,

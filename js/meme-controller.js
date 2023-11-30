@@ -61,10 +61,25 @@ function onincreaseFont() {
 
 
 function onSwitchLine() {
-    var currLine = switchLine()
-    gCtx.rect(20, 20, gElCanvas.width / 2, gMeme.lines[currLine].posY + 20);
-    gCtx.stroke();
-    // renderMeme()
+    var currLine = switchLine();
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    renderMeme();
+    if (gMeme.lines[currLine].txt) {
+        var text = gMeme.lines[currLine].txt;
+        var textWidth = gCtx.measureText(text).width;
+        var textHeight = gMeme.lines[currLine].size;
+        var padding = 10;
+        var rectWidth = textWidth + 2 * padding;
+        var rectHeight = textHeight + 2 * padding;
+        var x = (gElCanvas.width - rectWidth) / 2;
+        var y = gMeme.lines[currLine].posY - textHeight / 2 - padding;
+
+        gCtx.beginPath();
+        gCtx.rect(x, y, rectWidth, rectHeight);
+        gCtx.lineWidth = 2;
+        gCtx.strokeStyle = 'black';
+        gCtx.stroke();
+    }
 }
 
 function onAddLine() {
