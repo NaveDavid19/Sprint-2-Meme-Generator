@@ -24,7 +24,6 @@ function renderImage(meme) {
 function renderRectangles(meme) {
     if (!gIsSwitch) return
     let selectedLine = meme.lines[meme.selectedLineIdx]
-    console.log(selectedLine);
     if (!selectedLine.txt) return
 
     let text = selectedLine.txt;
@@ -80,18 +79,15 @@ function onincreaseFont(lineId) {
     renderMeme()
 }
 
-function clearRect() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-}
-
 function onSwitchLine() {
     switchLine();
+    gCtx.reset()
     renderMeme()
 }
 
 function onAddLine() {
     addLine()
-    renderFunctions()
+    renderMeme()
 }
 
 function renderFunctions() {
