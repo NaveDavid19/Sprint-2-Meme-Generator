@@ -53,28 +53,33 @@ function onincreaseFont(lineId) {
     renderMeme()
 }
 
+function switchRectText(lineId) {
+    if (!gMeme.lines[lineId].txt) return
+    var text = gMeme.lines[lineId].txt;
+    var textWidth = gCtx.measureText(text).width;
+    var textHeight = gMeme.lines[lineId].size;
+    var padding = 10;
+    var rectWidth = textWidth + 2 * padding;
+    var rectHeight = textHeight + 2 * padding;
+    var x = (gElCanvas.width - rectWidth) / 2;
+    var y = gMeme.lines[lineId].posY - textHeight / 2 - padding;
+    // gCtx.beginPath();
+    gCtx.rect(x, y, rectWidth, rectHeight);
+    gCtx.lineWidth = 2;
+    gCtx.strokeStyle = 'black';
+    gCtx.stroke();
 
+}
+
+function clearRect() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
 
 function onSwitchLine() {
+    clearRect()
     var currLine = switchLine();
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-    renderMeme();
-    if (gMeme.lines[currLine].txt) {
-        var text = gMeme.lines[currLine].txt;
-        var textWidth = gCtx.measureText(text).width;
-        var textHeight = gMeme.lines[currLine].size;
-        var padding = 10;
-        var rectWidth = textWidth + 2 * padding;
-        var rectHeight = textHeight + 2 * padding;
-        var x = (gElCanvas.width - rectWidth) / 2;
-        var y = gMeme.lines[currLine].posY - textHeight / 2 - padding;
-
-        gCtx.beginPath();
-        gCtx.rect(x, y, rectWidth, rectHeight);
-        gCtx.lineWidth = 2;
-        gCtx.strokeStyle = 'black';
-        gCtx.stroke();
-    }
+    switchRectText(currLine)
+    renderMeme()
 }
 
 function onAddLine() {
@@ -87,7 +92,6 @@ function reenderFunctions() {
     let elFunctions = document.querySelector('.main-functions')
     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this,${line.id})">
-
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
