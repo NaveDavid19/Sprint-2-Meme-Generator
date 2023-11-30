@@ -1,6 +1,9 @@
 'use strict'
 
 
+
+
+
 function renderGallery() {
     let elGallery = document.querySelector('.gallery-container')
     let imgs = getImgs()
@@ -13,8 +16,12 @@ function getImgs() {
 }
 
 function onSelectImg(elImg) {
+    let elGallery = document.querySelector('.gallery')
+    elGallery.classList.add('hide')
+    let elMeme = document.querySelector('.memes')
+    elMeme.classList.remove('hide')
     let currImgId = elImg.dataset.id
-    setImg(+currImgId)
     resetMeme()
+    setImg(+currImgId)
     renderMeme()
 }

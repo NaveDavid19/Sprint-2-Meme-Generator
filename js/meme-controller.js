@@ -3,19 +3,15 @@
 let gElCanvas;
 let gCtx;
 
-function onInit() {
-    gElCanvas = document.querySelector('canvas');
-    gCtx = gElCanvas.getContext('2d');
-    renderGallery()
-    renderFunctions()
-}
+
 
 function renderMeme() {
     let meme = getMeme()
-    console.log(meme);
     let imgUrl = getImg(meme.selectedImgId)
+
     renderImage(meme)
     renderLines(meme, imgUrl)
+    renderFunctions()
 }
 
 function renderImage(meme) {

@@ -14,17 +14,17 @@
         <div class="logo">memegen</div>
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <li onclick="onSelectPage(this)"><a href="#">Gallery</a></li>
-                <li onclick="onSelectPage(this)"><a href="#">Memes</a></li>
-                <li onclick="onSelectPage(this)"><a href="#">About</a></li>
+                <li id="gallery" onclick="onSelectPage(this)"><a href="#">Gallery</a></li>
+                <li id="memes" onclick="onSelectPage(this)"><a href="#">Memes</a></li>
+                <li id="about" onclick="onSelectPage(this)"><a href="#">About</a></li>
             </ul>
         </nav>
         <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
     </header>
     <main>
-        <div class="gallery-container">
+        <div id="gallery" class="page gallery gallery-container">
         </div>
-        <div class="canvas-container">
+        <div id="memes" class="page memes canvas-container hide">
             <canvas width="300" height="300"></canvas>
             <div class="main-functions">
             </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
     </main>
-    <footer class="footer full">
+    <footer id="about" class="about footer full">
         <div class="logo">memegen</div>
         <small>all rights 2023</small>
 
@@ -45,6 +45,7 @@
     <script src="js/meme-services.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/gallery-controller.js"></script>
+    <script src="js/main-controller.js"></script>
 </body>
 
 </html>
