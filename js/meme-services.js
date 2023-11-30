@@ -2,6 +2,7 @@
 let gLineId = 0
 let gPosY = 10
 let gIsMax = false
+let gIsSwitch = false
 
 
 let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: `meme-imgs/meme-imgs (square)/2.jpg`, keywords: ['trump'] }]
@@ -73,6 +74,7 @@ function addLine() {
     },)
 }
 function switchLine() {
+    gIsSwitch = true
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {
         gMeme.selectedLineIdx += 1
     } else {

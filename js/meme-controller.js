@@ -10,6 +10,7 @@ function renderMeme() {
     let imgUrl = getImg(meme.selectedImgId)
     renderImage(meme)
     renderLines(meme, imgUrl)
+    renderRectangles(meme)
     renderFunctions()
 }
 
@@ -18,6 +19,27 @@ function renderImage(meme) {
     if (imgUrl) {
         gCtx.drawImage(imgUrl, 0, 0, gElCanvas.width, gElCanvas.height)
     }
+}
+
+function renderRectangles(meme) {
+    if (!gIsSwitch) return
+    let selectedLine = meme.lines[meme.selectedLineIdx]
+    console.log(selectedLine);
+    if (!selectedLine.txt) return
+
+    let text = selectedLine.txt;
+    let textWidth = gCtx.measureText(text).width;
+    let textHeight = selectedLine.size;
+    let padding = 10;
+    let rectWidth = textWidth + 2 * padding;
+    let rectHeight = textHeight + 2 * padding;
+    let x = (gElCanvas.width - rectWidth) / 2;
+    let y = selectedLine.posY - textHeight / 2 - padding;
+
+    gCtx.rect(x, y, rectWidth, rectHeight);
+    gCtx.lineWidth = 2;
+    gCtx.strokeStyle = 'black';
+    gCtx.stroke();
 }
 
 function renderLines(meme, imgUrl) {
@@ -58,31 +80,13 @@ function onincreaseFont(lineId) {
     renderMeme()
 }
 
-function switchRectText(lineId) {
-    if (!gMeme.lines[lineId].txt) return
-
-    let text = gMeme.lines[lineId].txt;
-    let textWidth = gCtx.measureText(text).width;
-    let textHeight = gMeme.lines[lineId].size;
-    let padding = 10;
-    let rectWidth = textWidth + 2 * padding;
-    let rectHeight = textHeight + 2 * padding;
-    let x = (gElCanvas.width - rectWidth) / 2;
-    let y = gMeme.lines[lineId].posY - textHeight / 2 - padding;
-
-    gCtx.rect(x, y, rectWidth, rectHeight);
-    gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'black';
-    gCtx.stroke();
-}
-
 function clearRect() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
 function onSwitchLine() {
-    let currLine = switchLine();
-    switchRectText(currLine)
+    switchLine();
+    renderMeme()
 }
 
 function onAddLine() {
