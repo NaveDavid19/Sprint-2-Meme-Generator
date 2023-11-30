@@ -16,6 +16,7 @@ function getMeme() {
 }
 
 function resetMeme() {
+    gLineId = 0
     gMeme = createMeme()
 }
 
@@ -43,8 +44,8 @@ function setTextColor(color, lineId) {
     gMeme.lines[lineId].color = color
 }
 
-function setLineTxt(txt, lineId) {
-    gMeme.lines[lineId].txt = txt
+function setLineTxt(text, lineId) {
+    gMeme.lines[lineId].txt = text
 }
 
 

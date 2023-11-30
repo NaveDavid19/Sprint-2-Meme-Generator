@@ -8,7 +8,6 @@ let gCtx;
 function renderMeme() {
     let meme = getMeme()
     let imgUrl = getImg(meme.selectedImgId)
-
     renderImage(meme)
     renderLines(meme, imgUrl)
     renderFunctions()

@@ -23,5 +23,6 @@ function onSelectImg(elImg) {
     let currImgId = elImg.dataset.id
     resetMeme()
     setImg(+currImgId)
+
     renderMeme()
 }
