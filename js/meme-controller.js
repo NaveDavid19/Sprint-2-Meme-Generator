@@ -78,6 +78,10 @@ function onSwitchLine() {
 
 function onAddLine() {
     addLine()
+    reenderFunctions()
+}
+
+function reenderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
