@@ -28,7 +28,7 @@ function createMeme() {
         lines: [
             {
                 id: gLineId,
-                txt: undefined,
+                txt: ' ',
                 size: 20,
                 color: 'blue',
                 posY: gPosY
@@ -67,12 +67,13 @@ function addLine() {
     gPosY += 20
     gMeme.lines.push({
         id: gLineId,
-        txt: undefined,
+        txt: ' ',
         size: 20,
         color: 'blue',
         posY: gPosY
-    },)
+    })
 }
+
 function switchLine() {
     gIsSwitch = true
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {
