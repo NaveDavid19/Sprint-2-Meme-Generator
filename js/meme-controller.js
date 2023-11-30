@@ -99,7 +99,6 @@ function renderFunctions() {
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
-    <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
 </section>`).join('')
 
     elFunctions.innerHTML = strHtml
