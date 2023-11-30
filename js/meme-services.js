@@ -52,10 +52,6 @@ function decreaseFont() {
     gMeme.lines[gMemeId].size = currFont
 }
 
-// function selectedLineIdx(lineId) {
-//     gMeme.selectedLineIdx = lineId
-// }
-
 function addLine() {
     gMemeId++
     gPosY += 20

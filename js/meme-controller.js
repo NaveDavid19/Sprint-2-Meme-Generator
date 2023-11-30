@@ -19,7 +19,6 @@ function renderMeme() {
         meme.lines.forEach(function (lineProp) {
             drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
         })
-        // drawText(meme.lines[gMemeId].txt, gElCanvas.width / 2, 30, meme.lines[gMemeId].size, meme.lines[gMemeId].color)
     }
 }
 
@@ -53,11 +52,6 @@ function onincreaseFont() {
     renderMeme()
 }
 
-// function onSelectLine(lineId) {
-//     selectedLineIdx(lineId)
-//     renderMeme()
-// }
-
 
 
 function onSwitchLine() {
@@ -84,6 +78,20 @@ function onSwitchLine() {
 
 function onAddLine() {
     addLine()
+    let meme = getMeme()
+    let elFunctions = document.querySelector('.main-functions')
+    let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
+    <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this)">
+
+    <input type="color" name="select-color" onchange="onChangeColor(this)">
+    <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"></button>
+    <button onclick="onincreaseFont()"><img src="ICONS/increase font - icon.png"></button>
+    <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
+    <button onclick="onSwitchLine()"><img
+            src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+</section>`).join('')
+
+    elFunctions.innerHTML = strHtml
 }
 function drawText(text, x, y, size, color) {
     gCtx.lineWidth = 2
