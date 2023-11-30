@@ -7,15 +7,25 @@ function onInit() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery()
-    reenderFunctions()
+    renderFunctions()
 }
 
 function renderMeme() {
     let meme = getMeme()
+    console.log(meme);
+    let imgUrl = getImg(meme.selectedImgId)
+    renderImage(meme)
+    renderLines(meme, imgUrl)
+}
+
+function renderImage(meme) {
     let imgUrl = getImg(meme.selectedImgId)
     if (imgUrl) {
         gCtx.drawImage(imgUrl, 0, 0, gElCanvas.width, gElCanvas.height)
     }
+}
+
+function renderLines(meme, imgUrl) {
     if (meme.lines[gLineId].txt && imgUrl) {
         meme.lines.forEach(function (lineProp) {
             drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
@@ -55,20 +65,20 @@ function onincreaseFont(lineId) {
 
 function switchRectText(lineId) {
     if (!gMeme.lines[lineId].txt) return
-    var text = gMeme.lines[lineId].txt;
-    var textWidth = gCtx.measureText(text).width;
-    var textHeight = gMeme.lines[lineId].size;
-    var padding = 10;
-    var rectWidth = textWidth + 2 * padding;
-    var rectHeight = textHeight + 2 * padding;
-    var x = (gElCanvas.width - rectWidth) / 2;
-    var y = gMeme.lines[lineId].posY - textHeight / 2 - padding;
-    // gCtx.beginPath();
+
+    let text = gMeme.lines[lineId].txt;
+    let textWidth = gCtx.measureText(text).width;
+    let textHeight = gMeme.lines[lineId].size;
+    let padding = 10;
+    let rectWidth = textWidth + 2 * padding;
+    let rectHeight = textHeight + 2 * padding;
+    let x = (gElCanvas.width - rectWidth) / 2;
+    let y = gMeme.lines[lineId].posY - textHeight / 2 - padding;
+
     gCtx.rect(x, y, rectWidth, rectHeight);
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
-
 }
 
 function clearRect() {
@@ -76,20 +86,19 @@ function clearRect() {
 }
 
 function onSwitchLine() {
-    clearRect()
-    var currLine = switchLine();
+    let currLine = switchLine();
     switchRectText(currLine)
-    renderMeme()
 }
 
 function onAddLine() {
     addLine()
-    reenderFunctions()
+    renderFunctions()
 }
 
-function reenderFunctions() {
+function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
+
     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this,${line.id})">
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
@@ -102,6 +111,7 @@ function reenderFunctions() {
 
     elFunctions.innerHTML = strHtml
 }
+
 function drawText(text, x, y, size, color) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = `${color}`
