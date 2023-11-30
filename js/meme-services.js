@@ -30,7 +30,7 @@ function createMeme() {
                 id: gLineId,
                 txt: ' ',
                 size: 20,
-                color: 'blue',
+                color: 'black',
                 posY: gPosY
             },
         ]
@@ -69,7 +69,7 @@ function addLine() {
         id: gLineId,
         txt: ' ',
         size: 20,
-        color: 'blue',
+        color: 'black',
         posY: gPosY
     })
 }
@@ -86,6 +86,11 @@ function switchLine() {
         }
     }
     return gMeme.selectedLineIdx
+}
+
+function deleteLine(lineId) {
+    gMeme.lines.splice(lineId, 1)
+    gLineId--
 }
 
 

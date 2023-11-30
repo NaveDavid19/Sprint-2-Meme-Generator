@@ -42,7 +42,10 @@ function renderRectangles(meme) {
 }
 
 function renderLines(meme, imgUrl) {
+    console.log(meme.lines.length);
+    if (meme.lines.length === 0) return
     if (meme.lines[gLineId].txt && imgUrl) {
+        console.log(meme.lines.length);
         meme.lines.forEach(function (lineProp) {
             drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
         })
@@ -90,6 +93,11 @@ function onAddLine() {
     renderMeme()
 }
 
+function onDeleteLine(lineId) {
+    deleteLine(lineId)
+    renderMeme()
+}
+
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
@@ -99,6 +107,7 @@ function renderFunctions() {
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
+    <button onclick="onDeleteLine(${line.id})"><img src="ICONS/trash.png"></button>
 </section>`).join('')
 
     elFunctions.innerHTML = strHtml
@@ -107,8 +116,8 @@ function renderFunctions() {
 function drawText(text, x, y, size, color) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = `${color}`
-    gCtx.fillStyle = 'black'
-    gCtx.font = `${size}px Arial`
+    gCtx.fillStyle = 'white'
+    gCtx.font = `${size}px Impact`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
