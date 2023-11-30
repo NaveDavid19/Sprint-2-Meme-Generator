@@ -100,8 +100,6 @@ function renderFunctions() {
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
     <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
-    <button onclick="onSwitchLine()"><img
-            src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
 </section>`).join('')
 
     elFunctions.innerHTML = strHtml
