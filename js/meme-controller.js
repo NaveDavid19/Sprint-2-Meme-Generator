@@ -7,6 +7,7 @@ function onInit() {
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery()
+    reenderFunctions()
 }
 
 function renderMeme() {
@@ -15,7 +16,7 @@ function renderMeme() {
     if (imgUrl) {
         gCtx.drawImage(imgUrl, 0, 0, gElCanvas.width, gElCanvas.height)
     }
-    if (meme.lines[gMemeId].txt && imgUrl) {
+    if (meme.lines[gLineId].txt && imgUrl) {
         meme.lines.forEach(function (lineProp) {
             drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
         })
@@ -32,23 +33,23 @@ function onSelectImg(elImg) {
     renderMeme()
 }
 
-function onTextChange(txt) {
-    setLineTxt(txt.value)
+function onTextChange(txt, lineId) {
+    setLineTxt(txt.value, lineId)
     renderMeme()
 }
 
-function onChangeColor(color) {
-    setTextColor(color.value)
+function onChangeColor(color, lineId) {
+    setTextColor(color.value, lineId)
     renderMeme()
 }
 
-function onDecreaseFont() {
-    decreaseFont()
+function onDecreaseFont(lineId) {
+    decreaseFont(lineId)
     renderMeme()
 }
 
-function onincreaseFont() {
-    increaseFont()
+function onincreaseFont(lineId) {
+    increaseFont(lineId)
     renderMeme()
 }
 
@@ -85,11 +86,11 @@ function reenderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
-    <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this)">
+    <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this,${line.id})">
 
-    <input type="color" name="select-color" onchange="onChangeColor(this)">
-    <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"></button>
-    <button onclick="onincreaseFont()"><img src="ICONS/increase font - icon.png"></button>
+    <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
+    <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
+    <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
     <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
     <button onclick="onSwitchLine()"><img
             src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>

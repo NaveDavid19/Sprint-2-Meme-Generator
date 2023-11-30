@@ -1,5 +1,5 @@
 'use strict'
-let gMemeId = 0
+let gLineId = 0
 let gPosY = 10
 let isMax = false
 
@@ -11,7 +11,7 @@ let gMeme = {
     selectedLineIdx: -1,
     lines: [
         {
-            id: gMemeId,
+            id: gLineId,
             txt: undefined,
             size: 20,
             color: 'blue',
@@ -31,32 +31,32 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function setTextColor(color) {
-    gMeme.lines[gMemeId].color = color
+function setTextColor(color, lineId) {
+    gMeme.lines[lineId].color = color
 }
 
-function setLineTxt(txt) {
-    gMeme.lines[gMemeId].txt = txt
+function setLineTxt(txt, lineId) {
+    gMeme.lines[lineId].txt = txt
 }
 
 
-function increaseFont() {
+function increaseFont(lineId) {
     let currFont = gCtx.font.substring(0, gCtx.font.indexOf('px'))
     currFont++
-    gMeme.lines[gMemeId].size = currFont
+    gMeme.lines[lineId].size = currFont
 }
 
-function decreaseFont() {
+function decreaseFont(lineId) {
     let currFont = gCtx.font.substring(0, gCtx.font.indexOf('px'))
     currFont--
-    gMeme.lines[gMemeId].size = currFont
+    gMeme.lines[lineId].size = currFont
 }
 
 function addLine() {
-    gMemeId++
+    gLineId++
     gPosY += 20
     gMeme.lines.push({
-        id: gMemeId,
+        id: gLineId,
         txt: undefined,
         size: 20,
         color: 'blue',
