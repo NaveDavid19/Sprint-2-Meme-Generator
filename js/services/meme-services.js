@@ -39,24 +39,28 @@ function setImg(imgId) {
 }
 
 function setTextColor(color, lineId) {
-    gMeme.lines[lineId].color = color
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    currLine.color = color
 }
 
 function setLineTxt(text, lineId) {
-    gMeme.lines[lineId].txt = text
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    currLine.txt = text
 }
 
 
 function increaseFont(lineId) {
-    let currFont = gMeme.lines[lineId].size
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    let currFont = currLine.size
     currFont++
-    gMeme.lines[lineId].size = currFont
+    currLine.size = currFont
 }
 
 function decreaseFont(lineId) {
-    let currFont = gMeme.lines[lineId].size
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    let currFont = currLine.size
     currFont--
-    gMeme.lines[lineId].size = currFont
+    currLine.size = currFont
 }
 
 function addLine() {
@@ -86,10 +90,19 @@ function switchLine() {
 }
 
 function deleteLine(lineId) {
-    // debugger
     let lineIdx = gMeme.lines.findIndex(line => line.id === lineId)
     gMeme.lines.splice(lineIdx, 1)
     gLineId--
+}
+
+function positionUp(lineId) {
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    currLine.posY -= 1
+}
+
+function positionDown(lineId) {
+    let currLine = gMeme.lines.find(line => line.id === lineId)
+    currLine.posY += 1
 }
 
 

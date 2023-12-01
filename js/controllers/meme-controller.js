@@ -96,6 +96,16 @@ function onDeleteLine(lineId) {
     renderMeme()
 }
 
+function onPositionUp(lineId) {
+    positionUp(lineId)
+    renderMeme()
+}
+
+function onPositionDown(lineId) {
+    positionDown(lineId)
+    renderMeme()
+}
+
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
@@ -105,6 +115,8 @@ function renderFunctions() {
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
+    <button onclick="onPositionUp(${line.id})"><img src="ICONS/up-arrow-black.png"></button>
+    <button onclick="onPositionDown(${line.id})"><img src="ICONS/down-arrow.png"></button>
     <button onclick="onDeleteLine(${line.id})"><img src="ICONS/trash.png"></button>
 </section>`).join('')
 
