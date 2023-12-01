@@ -42,7 +42,7 @@ function renderRectangles(meme) {
 }
 
 function renderLines(meme, imgUrl) {
-    // if (meme.lines.length === 0) return
+    if (meme.lines.length === 0) return
     if (meme.lines[gLineId].txt && imgUrl) {
         meme.lines.forEach(function (lineProp) {
             drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
