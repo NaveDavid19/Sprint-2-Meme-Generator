@@ -22,6 +22,9 @@
         <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
     </header>
     <main>
+        <div class="title-gallery">
+            <h1>Select a meme to edit</h1>
+        </div>
         <div id="gallery" class="page gallery gallery-container">
         </div>
         <div id="memes" class="page memes canvas-container hide">
@@ -38,17 +41,17 @@
     </main>
     <footer id="about" class="about footer full">
         <div class="logo">memegen</div>
-        <small>all rights 2023</small>
+        <small>all rights reserved 2023</small>
 
     </footer>
 
-
-    <script src="js/storage.service.js"></script>
-    <script src="js/utils.service.js"></script>
-    <script src="js/meme-services.js"></script>
-    <script src="js/meme-controller.js"></script>
-    <script src="js/gallery-controller.js"></script>
-    <script src="js/main-controller.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/utils.service.js"></script>
+    <script src="js/services/meme-services.js"></script>
+    <script src="js/controllers/meme-controller.js"></script>
+    <script src="js/services/gallery-services.js"></script>
+    <script src="js/controllers/gallery-controller.js"></script>
+    <script src="js/controllers/main-controller.js"></script>
 </body>
 
 </html>

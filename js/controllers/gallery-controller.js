@@ -17,6 +17,8 @@ function getImgs() {
 
 function onSelectImg(elImg) {
     let elGallery = document.querySelector('.gallery')
+    var elTitle = document.querySelector('.title-gallery')
+    elTitle.classList.add('hide')
     elGallery.classList.add('hide')
     let elMeme = document.querySelector('.memes')
     elMeme.classList.remove('hide')

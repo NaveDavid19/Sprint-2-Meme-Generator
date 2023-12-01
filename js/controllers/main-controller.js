@@ -8,8 +8,10 @@ function onInit() {
 
 function onSelectPage(header) {
     var pages = document.querySelectorAll('.page')
+    var elTitle = document.querySelector('.title-gallery')
+    elTitle.classList.toggle('hide')
     pages.forEach(page => {
-        if (page.id == header.id) {
+        if (page.id === header.id) {
             page.classList.remove('hide')
         } else {
             page.classList.add('hide')

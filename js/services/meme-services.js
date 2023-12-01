@@ -4,9 +4,6 @@ let gPosY = 10
 let gIsMax = false
 let gIsSwitch = false
 
-
-let gImgs = [{ id: 1, url: 'meme-imgs/meme-imgs (square)/1.jpg', keywords: ['trump'] }, { id: 2, url: `meme-imgs/meme-imgs (square)/2.jpg`, keywords: ['trump'] }]
-
 let gMeme = createMeme()
 
 // let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -89,7 +86,9 @@ function switchLine() {
 }
 
 function deleteLine(lineId) {
-    gMeme.lines.splice(lineId, 1)
+    // debugger
+    let lineIdx = gMeme.lines.findIndex(line => line.id === lineId)
+    gMeme.lines.splice(lineIdx, 1)
     gLineId--
 }
 
