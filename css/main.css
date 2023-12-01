@@ -112,6 +112,14 @@ main {
     padding-bottom: 20px;
 }
 
+.title-gallery h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.logo {
+    font-size: 22px;
+}
 
 @media (max-width: 860px) {
     body {

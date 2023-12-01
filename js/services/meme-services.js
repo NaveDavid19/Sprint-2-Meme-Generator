@@ -76,12 +76,15 @@ function addLine() {
 }
 
 function switchLine() {
+    if (gMeme.lines[gMeme.selectedLineIdx + 1].txt === ' ') return
+    if (gMeme.selectedLineIdx > gMeme.lines.length - 1) return
     gIsSwitch = true
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {
         gMeme.selectedLineIdx += 1
     } else {
         gIsMax = true
         gMeme.selectedLineIdx -= 1
+
         if (gMeme.selectedLineIdx === 0) {
             gIsMax = false
         }
