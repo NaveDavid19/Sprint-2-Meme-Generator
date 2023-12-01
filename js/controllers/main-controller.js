@@ -9,7 +9,11 @@ function onInit() {
 function onSelectPage(header) {
     var pages = document.querySelectorAll('.page')
     var elTitle = document.querySelector('.title-gallery')
-    elTitle.classList.toggle('hide')
+    if (header.id === 'gallery')
+        elTitle.classList.remove('hide')
+    else {
+        elTitle.classList.add('hide')
+    }
     pages.forEach(page => {
         if (page.id === header.id) {
             page.classList.remove('hide')
