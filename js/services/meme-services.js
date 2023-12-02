@@ -65,7 +65,7 @@ function decreaseFont(lineId) {
 function addLine() {
     gMeme.selectedLineIdx++
     gLineId++
-    gPosY += 20
+    gPosY += 40
     gMeme.lines.push({
         id: gLineId,
         txt: ' ',
@@ -98,6 +98,10 @@ function deleteLine(lineId) {
     let lineIdx = gMeme.lines.findIndex(line => line.id === lineId)
     gMeme.lines.splice(lineIdx, 1)
     gLineId--
+    gMeme.selectedLineIdx--
+    if (gMeme.lines.length === 0) {
+        addLine()
+    }
 }
 
 function positionUp(lineId) {
