@@ -23,7 +23,8 @@ function createDefaultLine() {
         txt: ' ',
         size: 20,
         color: '#000000',
-        posY: gPosY
+        posY: gPosY,
+        posX: 150
     }
 
 }

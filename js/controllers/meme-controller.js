@@ -22,7 +22,7 @@ function renderImage(meme) {
     }
 }
 
-function renderRectangles(meme) {
+function calcRectPos(meme) {
     let selectedLine = meme.lines[meme.selectedLineIdx]
 
     let text = selectedLine.txt;
@@ -33,6 +33,16 @@ function renderRectangles(meme) {
     let rectHeight = textHeight + 2 * padding;
     let x = (gElCanvas.width - rectWidth) / 2;
     let y = selectedLine.posY - textHeight / 2 - padding;
+    return {
+        rectHeight,
+        rectWidth,
+        x,
+        y,
+    }
+}
+
+function renderRectangles(meme) {
+    let { rectHeight, rectWidth, x, y } = calcRectPos(meme)
 
     gCtx.rect(x, y, rectWidth, rectHeight);
     gCtx.lineWidth = 2;
@@ -44,7 +54,7 @@ function renderLines(meme, imgUrl) {
     if (meme.lines.length === 0) return
     if (meme.lines[gLineId].txt && imgUrl) {
         meme.lines.forEach(function (lineProp) {
-            drawText(lineProp.txt, gElCanvas.width / 2, lineProp.posY, lineProp.size, lineProp.color)
+            drawText(lineProp.txt, lineProp.posX, lineProp.posY, lineProp.size, lineProp.color)
         })
     }
 }
@@ -120,6 +130,18 @@ function renderFunctions() {
 </section>`
 
     elFunctions.innerHTML = strHtml
+}
+
+function onMouseMove(ev) {
+    const { offsetX, offsetY, clientX, clientY } = ev
+    const clickedText = gMeme.lines.find(line => {
+        return offsetX >= line.posX && offsetX <= line.posX
+            && offsetY >= line.posY && offsetY <= line.posY
+    })
+
+    if (clickedText) {
+        onSwitchLine()
+    }
 }
 
 function drawText(text, x, y, size, color) {
