@@ -17,18 +17,22 @@ function resetMeme() {
     gMeme = createMeme()
 }
 
+function createDefaultLine() {
+    return {
+        id: gLineId,
+        txt: ' ',
+        size: 20,
+        color: '#000000',
+        posY: gPosY
+    }
+
+}
 function createMeme() {
     return {
         selectedImgId: undefined,
         selectedLineIdx: 0,
         lines: [
-            {
-                id: gLineId,
-                txt: ' ',
-                size: 20,
-                color: 'black',
-                posY: gPosY
-            },
+            createDefaultLine()
         ]
     }
 }
@@ -66,13 +70,7 @@ function addLine() {
     gMeme.selectedLineIdx++
     gLineId++
     gPosY += 40
-    gMeme.lines.push({
-        id: gLineId,
-        txt: ' ',
-        size: 20,
-        color: 'black',
-        posY: gPosY
-    })
+    gMeme.lines.push(createDefaultLine())
 }
 
 function switchLine() {
