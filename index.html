@@ -10,15 +10,19 @@
 
 <body onload="onInit()" class="main-layout">
     <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
-    <header class="main-header full">
-        <div class="logo">memegen</div>
-        <nav class="main-nav">
-            <ul class="main-nav-list">
-                <li id="gallery" onclick="onSelectPage(this)"><a href="#">Gallery</a></li>
-                <li id="memes" onclick="onSelectPage(this)"><a href="#">Memes</a></li>
-            </ul>
-        </nav>
-        <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
+    <header class="main-header main-layout full">
+        <div class=" flex space-between align-center">
+            <div class="logo">memegen</div>
+            <nav class="main-nav">
+                <ul class="main-nav-list flex clean-list">
+                    <li id="gallery" onclick="onSelectPage(this)"><a class="flex justify-center align-center"
+                            href="#">Gallery</a></li>
+                    <li id="memes" onclick="onSelectPage(this)"><a class="flex justify-center align-center"
+                            href="#">Memes</a></li>
+                </ul>
+            </nav>
+            <!-- <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button> -->
+        </div>
     </header>
     <main>
         <div class="title-gallery">
@@ -38,7 +42,7 @@
             </div>
         </div>
     </main>
-    <footer id="about" class="about footer full">
+    <footer id="about" class="flex column align-center full">
         <div class="logo">memegen</div>
         <small>all rights reserved 2023</small>
 

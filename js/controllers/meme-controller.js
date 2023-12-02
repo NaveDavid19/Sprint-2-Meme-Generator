@@ -111,7 +111,7 @@ function renderFunctions() {
     let elFunctions = document.querySelector('.main-functions')
 
     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
-    <input type="text" name="add-text" placeholder="Add Text Here" onchange="onTextChange(this,${line.id})">
+    <input type="text" name="add-text" placeholder="Add Text Here" value="${line.txt}"onchange="onTextChange(this,${line.id})">
     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
