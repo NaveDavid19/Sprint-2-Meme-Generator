@@ -77,17 +77,22 @@ function addLine() {
 }
 
 function switchLine() {
+    if (gMeme.lines.length === 1) return
+
     gIsSwitch = true
-    if (gMeme.selectedLineIdx < gMeme.lines.length && !gIsMax) {
-        gMeme.selectedLineIdx += 1
+    let step
+
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {
+        step = 1
     } else {
         gIsMax = true
-        gMeme.selectedLineIdx -= 1
-
-        if (gMeme.selectedLineIdx === 0) {
-            gIsMax = false
-        }
+        step = -1
     }
+    if (gMeme.selectedLineIdx === 0) {
+        step = 1
+        gIsMax = false
+    }
+    gMeme.selectedLineIdx += step
     return gMeme.selectedLineIdx
 }
 
