@@ -2,7 +2,6 @@
 let gLineId = 0
 let gPosY = 10
 let gIsMax = false
-let gIsSwitch = false
 
 let gMeme = createMeme()
 
@@ -79,7 +78,6 @@ function addLine() {
 function switchLine() {
     if (gMeme.lines.length === 1) return
 
-    gIsSwitch = true
     let step
 
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {

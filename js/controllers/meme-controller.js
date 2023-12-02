@@ -23,10 +23,7 @@ function renderImage(meme) {
 }
 
 function renderRectangles(meme) {
-    if (!gIsSwitch) return
     let selectedLine = meme.lines[meme.selectedLineIdx]
-    if (selectedLine.txt === ' ') return
-    if (!selectedLine.txt) return
 
     let text = selectedLine.txt;
     let textWidth = gCtx.measureText(text).width;
@@ -121,16 +118,6 @@ function renderFunctions() {
     <button onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
     <button onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
 </section>`
-
-    //     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
-    //     <input type="text" name="add-text" placeholder="Add Text Here" value="${line.txt === ' ' ? '' : `${line.txt}`}"onchange="onTextChange(this,${line.id})">
-    //     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
-    //     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
-    //     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
-    //     <button onclick="onPositionUp(${line.id})"><img src="ICONS/up-arrow-black.png"></button>
-    //     <button onclick="onPositionDown(${line.id})"><img src="ICONS/down-arrow.png"></button>
-    //     <button onclick="onDeleteLine(${line.id})"><img src="ICONS/trash.png"></button>
-    // </section>`).join('')
 
     elFunctions.innerHTML = strHtml
 }
