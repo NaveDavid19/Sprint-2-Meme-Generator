@@ -21,7 +21,7 @@ function resetMeme() {
 function createMeme() {
     return {
         selectedImgId: undefined,
-        selectedLineIdx: -1,
+        selectedLineIdx: 0,
         lines: [
             {
                 id: gLineId,
@@ -64,6 +64,7 @@ function decreaseFont(lineId) {
 }
 
 function addLine() {
+    gMeme.selectedLineIdx++
     gLineId++
     gPosY += 20
     gMeme.lines.push({
@@ -76,10 +77,8 @@ function addLine() {
 }
 
 function switchLine() {
-    if (gMeme.lines[gMeme.selectedLineIdx + 1].txt === ' ') return
-    if (gMeme.selectedLineIdx > gMeme.lines.length - 1) return
     gIsSwitch = true
-    if (gMeme.selectedLineIdx < gMeme.lines.length - 1 && !gIsMax) {
+    if (gMeme.selectedLineIdx < gMeme.lines.length && !gIsMax) {
         gMeme.selectedLineIdx += 1
     } else {
         gIsMax = true

@@ -24,6 +24,7 @@ function renderImage(meme) {
 function renderRectangles(meme) {
     if (!gIsSwitch) return
     let selectedLine = meme.lines[meme.selectedLineIdx]
+    console.log(selectedLine);
     if (!selectedLine.txt) return
 
     let text = selectedLine.txt;
@@ -109,15 +110,27 @@ function onPositionDown(lineId) {
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
-    let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
-    <input type="text" name="add-text" placeholder="Add Text Here" value="${line.txt === ' ' ? '' : `${line.txt}`}"onchange="onTextChange(this,${line.id})">
-    <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
-    <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
-    <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
-    <button onclick="onPositionUp(${line.id})"><img src="ICONS/up-arrow-black.png"></button>
-    <button onclick="onPositionDown(${line.id})"><img src="ICONS/down-arrow.png"></button>
-    <button onclick="onDeleteLine(${line.id})"><img src="ICONS/trash.png"></button>
-</section>`).join('')
+    let currLine = meme.lines.find(line => line.id === meme.selectedLineIdx)
+
+    let strHtml = `<section data-id="${currLine.id}">
+    <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
+    <input type="color" name="select-color" onchange="onChangeColor(this,${currLine.id})">
+    <button onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
+    <button onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
+    <button onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
+    <button onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
+    <button onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
+</section>`
+
+    //     let strHtml = meme.lines.map(line => `<section data-id="${line.id}">
+    //     <input type="text" name="add-text" placeholder="Add Text Here" value="${line.txt === ' ' ? '' : `${line.txt}`}"onchange="onTextChange(this,${line.id})">
+    //     <input type="color" name="select-color" onchange="onChangeColor(this,${line.id})">
+    //     <button onclick="onDecreaseFont(${line.id})"><img src="ICONS/decrease font - icon.png"></button>
+    //     <button onclick="onincreaseFont(${line.id})"><img src="ICONS/increase font - icon.png"></button>
+    //     <button onclick="onPositionUp(${line.id})"><img src="ICONS/up-arrow-black.png"></button>
+    //     <button onclick="onPositionDown(${line.id})"><img src="ICONS/down-arrow.png"></button>
+    //     <button onclick="onDeleteLine(${line.id})"><img src="ICONS/trash.png"></button>
+    // </section>`).join('')
 
     elFunctions.innerHTML = strHtml
 }
