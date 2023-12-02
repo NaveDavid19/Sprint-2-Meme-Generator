@@ -27,6 +27,7 @@
     <main>
         <div class="title-gallery">
             <h1>Select an image to meme</h1>
+            <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" accept="image/*" />
         </div>
         <div id="gallery" class="page gallery gallery-container">
         </div>
@@ -39,6 +40,9 @@
             <div class="main-functions"></div>
             <div class="data-functions">
                 <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                <button href="#" class="btn" onclick="onUploadImg(this)"><img src="ICONS/facebook-logo.png"
+                        alt="">Upload to
+                    Facebook </button>
             </div>
         </div>
     </main>

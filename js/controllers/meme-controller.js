@@ -11,7 +11,7 @@ function renderMeme() {
     gCtx.reset()
     renderImage(meme)
     renderLines(meme, imgUrl)
-    renderRectangles(meme)
+    renderRectangles(meme.lines[meme.selectedLineIdx])
     renderFunctions()
 }
 
@@ -22,17 +22,15 @@ function renderImage(meme) {
     }
 }
 
-function calcRectPos(meme) {
-    let selectedLine = meme.lines[meme.selectedLineIdx]
-
-    let text = selectedLine.txt;
+function calcRectPos(line) {
+    let text = line.txt;
     let textWidth = gCtx.measureText(text).width;
-    let textHeight = selectedLine.size;
+    let textHeight = line.size;
     let padding = 10;
     let rectWidth = textWidth + 2 * padding;
     let rectHeight = textHeight + 2 * padding;
     let x = (gElCanvas.width - rectWidth) / 2;
-    let y = selectedLine.posY - textHeight / 2 - padding;
+    let y = line.posY - textHeight / 2 - padding;
     return {
         rectHeight,
         rectWidth,
@@ -41,8 +39,8 @@ function calcRectPos(meme) {
     }
 }
 
-function renderRectangles(meme) {
-    let { rectHeight, rectWidth, x, y } = calcRectPos(meme)
+function renderRectangles(line) {
+    let { rectHeight, rectWidth, x, y } = calcRectPos(line)
 
     gCtx.rect(x, y, rectWidth, rectHeight);
     gCtx.lineWidth = 2;
@@ -114,6 +112,11 @@ function onPositionDown(lineId) {
     renderMeme()
 }
 
+function onEmojiClick(lineId) {
+    emojiClick(lineId)
+    renderMeme()
+}
+
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
@@ -122,6 +125,7 @@ function renderFunctions() {
     let strHtml = `<section data-id="${currLine.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
     <input type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
+    <button onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
     <button onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
     <button onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
     <button onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
@@ -133,14 +137,16 @@ function renderFunctions() {
 }
 
 function onMouseMove(ev) {
-    const { offsetX, offsetY, clientX, clientY } = ev
+    const { offsetX, offsetY } = ev;
     const clickedText = gMeme.lines.find(line => {
-        return offsetX >= line.posX && offsetX <= line.posX
-            && offsetY >= line.posY && offsetY <= line.posY
-    })
+        const positionRange = calcRectPos(line);
+        return offsetX >= positionRange.x && offsetX <= positionRange.x + positionRange.rectWidth &&
+            offsetY >= positionRange.y && offsetY <= positionRange.y + positionRange.rectHeight;
+    });
 
     if (clickedText) {
-        onSwitchLine()
+        updateSelectedLine(clickedText);
+        renderMeme()
     }
 }
 
