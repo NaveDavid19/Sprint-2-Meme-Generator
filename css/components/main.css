@@ -19,7 +19,22 @@ button img {
 
 
 
-img {
+.gallery-container img {
     border-radius: 15px;
     width: 100%;
+    cursor: pointer;
+    border: 5px solid transparent;
+}
+
+.gallery-container img:hover {
+    border: 5px solid rgba(255, 127, 0, 1)
+}
+
+button {
+    cursor: pointer;
+}
+
+
+input:not([type="text"]) {
+    cursor: pointer;
 }

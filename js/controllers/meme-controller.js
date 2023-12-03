@@ -124,13 +124,13 @@ function renderFunctions() {
 
     let strHtml = `<section data-id="${currLine.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
-    <input type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
-    <button onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
-    <button onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
-    <button onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
-    <button onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
-    <button onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
-    <button onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
+    <input title="Select-color" type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
+    <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
+    <button title="Decrease-font" onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
+    <button title="Increase-font" onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
+    <button title="Position-up" onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
+    <button title="Position-down" onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
+    <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
 </section>`
 
     elFunctions.innerHTML = strHtml

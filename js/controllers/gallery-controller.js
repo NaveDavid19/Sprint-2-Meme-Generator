@@ -1,9 +1,5 @@
 'use strict'
 
-
-
-
-
 function renderGallery() {
     let elGallery = document.querySelector('.gallery-container')
     let imgs = getImgs()

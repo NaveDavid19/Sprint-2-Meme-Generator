@@ -26,16 +26,16 @@
     </header>
     <main>
         <div class="title-gallery">
-            <h1>Select an image to meme</h1>
+            <h1>Select an image to edit</h1>
             <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" accept="image/*" />
         </div>
         <div id="gallery" class="page gallery gallery-container">
         </div>
         <div id="memes" class="page memes canvas-container hide">
-            <canvas width="300" height="300" onclick="onMouseMove(event)"></canvas>
-            <div class="default-functions"><button onclick="onSwitchLine()"><img
+            <canvas width="500" height="500" onclick="onMouseMove(event)"></canvas>
+            <div title="Switch-line" class="default-functions"><button onclick="onSwitchLine()"><img
                         src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                <button onclick="onAddLine()"><img src="ICONS/add.png"></button>
+                <button title="Add-line" onclick="onAddLine()"><img src="ICONS/add.png"></button>
             </div>
             <div class="main-functions"></div>
             <div class="data-functions">

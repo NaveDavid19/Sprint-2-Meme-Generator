@@ -1,21 +1,4 @@
-@media (max-width:1080px) {
-    .main-layout {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 1fr minmax(auto, 720px) 1fr;
-    }
-
-    .header li {
-        padding: 35px 25px;
-    }
-
-    .footer-logo {
-        padding-top: 40px;
-    }
-}
-
-
-@media (max-width: 860px) {
+@media (max-width: 980px) {
     body {
         grid-template-rows: 50px 1fr 50px;
     }
@@ -43,7 +26,7 @@
     } */
 
     .gallery-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2 1fr);
     }
 
     .title-gallery h1 {
