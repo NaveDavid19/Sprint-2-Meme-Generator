@@ -1,6 +1,6 @@
 @media (max-width: 980px) {
-    body {
-        grid-template-rows: 50px 1fr 50px;
+    .main-layout {
+        grid-template-columns: 50px minmax(auto, 960px) 50px;
     }
 
     .gallery-container {
@@ -18,15 +18,24 @@
     header li {
         padding: 20px 30px;
     }
+
+    canvas {
+        height: 350px;
+        width: 300px;
+    }
+
+    .functions {
+        height: 350px;
+    }
 }
 
 @media (max-width:640px) {
-    /* body {
-        grid-template-rows: 40px 1fr 60px;
-    } */
+    .main-layout {
+        grid-template-columns: 50px minmax(auto, 840px) 50px;
+    }
 
     .gallery-container {
-        grid-template-columns: repeat(2 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .title-gallery h1 {
@@ -39,5 +48,18 @@
 
     img {
         width: 250px;
+    }
+
+    canvas {
+        height: 250px;
+        width: 300px;
+    }
+
+    .memes {
+        grid-auto-flow: row;
+    }
+
+    .functions {
+        height: 300px;
     }
 }

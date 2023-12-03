@@ -5,7 +5,7 @@
 @import url("components/canvas.css");
 
 @import url("setup/variables.css");
-@import url("setup/mq.css");
 @import url("basics/base.css");
 @import url("basics/helpers.css");
 @import url("basics/layout.css");
+@import url("setup/mq.css");
