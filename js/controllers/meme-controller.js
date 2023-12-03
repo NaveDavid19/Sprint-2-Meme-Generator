@@ -117,12 +117,25 @@ function onEmojiClick(lineId) {
     renderMeme()
 }
 
+function onAlignRight(lineId) {
+    alignRight(lineId)
+    renderMeme()
+}
+function onAlignCenter(lineId) {
+    alignCenter(lineId)
+    renderMeme()
+}
+function onAlignLeft(lineId) {
+    alignLeft(lineId)
+    renderMeme()
+}
+
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
     let currLine = findLine(meme.selectedLineIdx)
 
-    let strHtml = `<section data-id="${currLine.id}">
+    let strHtml = `<div class="main-functions" data-id="${currLine.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
     <input title="Select-color" type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
     <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
@@ -130,8 +143,11 @@ function renderFunctions() {
     <button title="Increase-font" onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
     <button title="Position-up" onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
     <button title="Position-down" onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
+    <button title="Align-right" onclick="onAlignRight(${currLine.id})"><img src="ICONS/align-to-right.png"></button>
+    <button title="Align-center" onclick="onAlignCenter(${currLine.id})"><img src="ICONS/align-to-center.png"></button>
+    <button title="Align-left" onclick="onAlignLeft(${currLine.id})"><img src="ICONS/align-to-left.png"></button>
     <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
-</section>`
+</div>`
 
     elFunctions.innerHTML = strHtml
 }

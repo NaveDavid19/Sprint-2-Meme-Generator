@@ -24,16 +24,18 @@ header li:not(:last-child) {
     grid-auto-flow: column;
 }
 
-.logo {
-    font-size: 22px;
+.logo img {
+    width: 130px;
 }
 
-header .logo {
-    padding-left: 20px;
-}
 
 .main-header .main-nav-list a {
     color: inherit;
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: bold
+}
+
+.main-header .main-nav-list a:hover {
+    scale: 1.05;
 }

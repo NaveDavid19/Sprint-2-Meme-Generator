@@ -12,7 +12,7 @@
     <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
     <header class="main-header main-layout full">
         <div class=" flex space-between align-center">
-            <div class="logo">memegen</div>
+            <div class="logo"><img src="ICONS/LOGO.png"></div>
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
                     <li id="gallery" onclick="onSelectPage(this)"><a class="flex justify-center align-center"
@@ -33,21 +33,23 @@
         </div>
         <div id="memes" class="page memes canvas-container hide">
             <canvas width="500" height="500" onclick="onMouseMove(event)"></canvas>
-            <div title="Switch-line" class="default-functions"><button onclick="onSwitchLine()"><img
+
+            <div class="functions">
+                <button title="Switch-line" onclick="onSwitchLine()"><img
                         src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                 <button title="Add-line" onclick="onAddLine()"><img src="ICONS/add.png"></button>
-            </div>
-            <div class="main-functions"></div>
-            <div class="data-functions">
-                <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-                <button href="#" class="btn" onclick="onUploadImg(this)"><img src="ICONS/facebook-logo.png"
-                        alt="">Upload to
-                    Facebook </button>
+                <div class="main-functions"></div>
+                <div class="data-functions">
+                    <button title="Download as jpeg" href="#" class="btn" onclick="downloadImg(this)"
+                        download="my-img.jpg"><img src="ICONS/download.png"></button>
+                    <button title="Share to Facebook" href="#" class="btn" onclick="onUploadImg(this)"><img
+                            src="ICONS/facebook-logo.png"></button>
+                </div>
             </div>
         </div>
     </main>
     <footer id="about" class="flex column align-center full">
-        <div class="logo">memegen</div>
+        <div class="logo"><img src="ICONS/LOGO.png"></div>
         <small>all rights reserved 2023</small>
 
     </footer>

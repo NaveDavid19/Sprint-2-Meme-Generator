@@ -1,6 +1,6 @@
 'use strict'
 let gLineId = 0
-let gPosY = 10
+let gPosY = 30
 let gIsMax = false
 
 let gMeme = createMeme()
@@ -14,17 +14,18 @@ function getMeme() {
 
 function resetMeme() {
     gLineId = 0
+    gPosY = 30
     gMeme = createMeme()
 }
 
 function createDefaultLine() {
     return {
         id: gLineId,
-        txt: ' ',
+        txt: 'Enter Text',
         size: 20,
         color: '#000000',
         posY: gPosY,
-        posX: 150
+        posX: 250
     }
 
 }
@@ -129,6 +130,21 @@ function updateSelectedLine(clickedText) {
 function emojiClick(lineId) {
     let currLine = findLine(lineId)
     currLine.txt += '😁'
+}
+
+function alignRight(lineId) {
+    const currLine = findLine(lineId)
+    currLine.posX = 400
+}
+
+function alignCenter(lineId) {
+    const currLine = findLine(lineId)
+    currLine.posX = 250
+}
+
+function alignLeft(lineId) {
+    const currLine = findLine(lineId)
+    currLine.posX = 100
 }
 
 
