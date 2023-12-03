@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.row {
+    flex-direction: row;
+}
+
 .flex.align-center {
     align-items: center;
 }

@@ -42,16 +42,31 @@ input[type="text"] {
     border-radius: 20px;
     padding: 10px;
     border: 1ps solid black;
-    width: 300px;
+    width: 100%;
 }
 
+.main-functions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.bottom-functions {
+    width: 100%;
+}
 
 .functions {
     border: 1px solid black;
     border-radius: 15px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 500px;
+    justify-content: space-between;
+    width: 300px;
     height: 500px;
 }
 
@@ -59,8 +74,8 @@ button {
     background-color: antiquewhite;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+    padding: 7px;
+    margin: 7px;
     min-height: 30px;
     width: 70px;
 }
@@ -72,6 +87,9 @@ button {
     grid-auto-flow: column;
 }
 
+
+
+
 .data-functions button {
     border-radius: 15px;
 }
@@ -82,4 +100,21 @@ button:hover {
 
 input:hover {
     scale: 1.05;
+}
+
+.input-btn {
+    position: relative;
+    z-index: 3
+}
+
+.input-btn input {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    right: 10px;
+    bottom: 5px;
+}
+
+.input-btn button {
+    position: absolute;
 }

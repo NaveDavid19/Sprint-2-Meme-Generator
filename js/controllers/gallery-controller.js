@@ -52,6 +52,8 @@ function renderImg(img) {
     elGallery.classList.add('hide')
     let elMeme = document.querySelector('.memes')
     elMeme.classList.remove('hide')
+    gImgs.push({ id: gImgs.length + 1, url: img.src })
+    gMeme.selectedImgId = gImgs.length + 1
     resetMeme()
     renderMeme()
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)

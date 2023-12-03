@@ -130,27 +130,36 @@ function onAlignLeft(lineId) {
     renderMeme()
 }
 
-function renderFunctions() {
-    let meme = getMeme()
-    let elFunctions = document.querySelector('.main-functions')
-    let currLine = findLine(meme.selectedLineIdx)
+// function renderFunctions() {
+let meme = getMeme()
+let elFunctions = document.querySelector('.functions div')
+let currLine = findLine(meme.selectedLineIdx)
 
-    let strHtml = `<div class="main-functions" data-id="${currLine.id}">
+let strHtml = `<div class="main-functions" data-id="${currLine.id}">
+    <div>
     <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
-    <input title="Select-color" type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
-    <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
-    <button title="Decrease-font" onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
+    <button title="Switch-line" onclick="onSwitchLine()"><img
+    src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+    <button title="Add-line" onclick="onAddLine()"><img src="ICONS/add.png"></button>
+    <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
+    </div>
+    <div>
     <button title="Increase-font" onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
+    <button title="Decrease-font" onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
+    <button title="Align-left" onclick="onAlignLeft(${currLine.id})"><img src="ICONS/align-to-left.png"></button>
+    <button title="Align-center" onclick="onAlignCenter(${currLine.id})"><img src="ICONS/align-to-center.png"></button>
+    <button title="Align-right" onclick="onAlignRight(${currLine.id})"><img src="ICONS/align-to-right.png"></button>
+    </div>
+    <div>
     <button title="Position-up" onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
     <button title="Position-down" onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
-    <button title="Align-right" onclick="onAlignRight(${currLine.id})"><img src="ICONS/align-to-right.png"></button>
-    <button title="Align-center" onclick="onAlignCenter(${currLine.id})"><img src="ICONS/align-to-center.png"></button>
-    <button title="Align-left" onclick="onAlignLeft(${currLine.id})"><img src="ICONS/align-to-left.png"></button>
-    <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
+    <input title="Select-color" type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
+    <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
+    </div>
 </div>`
 
-    elFunctions.innerHTML = strHtml
-}
+elFunctions.innerHTML = strHtml
+// }
 
 function onMouseMove(ev) {
     const { offsetX, offsetY } = ev;
@@ -176,3 +185,60 @@ function drawText(text, x, y, size, color) {
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
+
+
+
+function renderFunctions() {
+    let meme = getMeme()
+    let elFunctions = document.querySelector('.functions div')
+    let currLine = findLine(meme.selectedLineIdx)
+
+    let strHtml = `<div class="main-functions" data-id="${currLine.id}">
+    <div class="header-functions column">
+
+        <div class="flex text-controller row">
+            <input type="text" name="add-text" placeholder="Add Text Here"
+                value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}" onchange="onTextChange(this,${currLine.id})">
+        </div>
+
+        <div class="flex controller-buttons row center">
+            <button title="Switch-line" onclick="onSwitchLine()"><img
+                    src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button title="Add-line" onclick="onAddLine()"><img src="ICONS/add.png"></button>
+            <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
+        </div>
+
+    </div>
+
+    <div class="flex bottom-functions column">
+        <div class="flex row">
+            <button title="Increase-font" onclick="onincreaseFont(${currLine.id})"><img
+                    src="ICONS/increase font - icon.png"></button>
+            <button title="Decrease-font" onclick="onDecreaseFont(${currLine.id})"><img
+                    src="ICONS/decrease font - icon.png"></button>
+            <button title="Align-left" onclick="onAlignLeft(${currLine.id})"><img
+                    src="ICONS/align-to-left.png"></button>
+            <button title="Align-center" onclick="onAlignCenter(${currLine.id})"><img
+                    src="ICONS/align-to-center.png"></button>
+            <button title="Align-right" onclick="onAlignRight(${currLine.id})"><img
+                    src="ICONS/align-to-right.png"></button>
+        </div>
+
+        <div class="flex row">
+            <button title="Position-up" onclick="onPositionUp(${currLine.id})"><img
+                    src="ICONS/up-arrow-black.png"></button>
+            <button title="Position-down" onclick="onPositionDown(${currLine.id})"><img
+                    src="ICONS/down-arrow.png"></button>
+                    <button class="input-btn"><img src="ICONS/paint-board-and-brush.png" alt=""><input title="Select-color" type="color" value="${currLine.color}" name="select-color"
+                onchange="onChangeColor(this,${currLine.id})"></button>
+            <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
+        </div>
+
+    </div>
+
+</div>`
+
+    elFunctions.innerHTML = strHtml
+}
+
+
