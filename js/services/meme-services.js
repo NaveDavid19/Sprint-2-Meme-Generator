@@ -98,8 +98,12 @@ function switchLine() {
     return gMeme.selectedLineIdx
 }
 
+function fineIdxLine(lineId) {
+    return gMeme.lines.findIndex(line => line.id === lineId)
+}
+
 function deleteLine(lineId) {
-    let lineIdx = gMeme.lines.findIndex(line => line.id === lineId)
+    const lineIdx = fineIdxLine(lineId)
     gMeme.lines.splice(lineIdx, 1)
     gLineId--
     gMeme.selectedLineIdx--
@@ -109,17 +113,17 @@ function deleteLine(lineId) {
 }
 
 function positionUp(lineId) {
-    let currLine = findLine(lineId)
+    const currLine = findLine(lineId)
     currLine.posY -= 1
 }
 
 function positionDown(lineId) {
-    let currLine = findLine(lineId)
+    const currLine = findLine(lineId)
     currLine.posY += 1
 }
 
 function updateSelectedLine(clickedText) {
-    const currLine = gMeme.lines.findIndex(line => line.id === clickedText.id);
+    const currLine = fineIdxLine(clickedText.id)
     gMeme.selectedLineIdx = currLine;
 }
 
