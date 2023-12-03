@@ -120,7 +120,7 @@ function onEmojiClick(lineId) {
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.main-functions')
-    let currLine = meme.lines.find(line => line.id === meme.selectedLineIdx)
+    let currLine = findLine(meme.selectedLineIdx)
 
     let strHtml = `<section data-id="${currLine.id}">
     <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">

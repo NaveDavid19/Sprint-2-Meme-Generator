@@ -1,0 +1,43 @@
+.main-nav-list {
+    margin: 0
+}
+
+header li {
+    display: inline;
+    padding: 30px 30px;
+}
+
+header li:not(:last-child) {
+    border-right: 0px;
+}
+
+.logo {
+    font-size: 40px;
+    font-family: eurofurence;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.main-nav-list {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+li {
+    list-style-type: none;
+}
+
+.logo {
+    font-size: 22px;
+}
+
+header .logo {
+    padding-left: 20px;
+}
+
+.main-header .main-nav-list a {
+    color: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+}

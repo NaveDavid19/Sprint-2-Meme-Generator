@@ -1,0 +1,15 @@
+.canvas-container article {
+    padding: 10px;
+}
+
+
+
+.canvas-container {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+canvas {
+    background-color: white;
+    border: 1px solid black;
+}

@@ -1,0 +1,40 @@
+.flex {
+    display: flex;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.justify-center {
+    justify-content: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.hide {
+    display: none;
+}
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.btn {
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 20px 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}

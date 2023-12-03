@@ -44,7 +44,6 @@ function setImg(imgId) {
 
 function findLine(lineId) {
     return gMeme.lines.find(line => line.id === lineId)
-
 }
 
 function setTextColor(color, lineId) {
