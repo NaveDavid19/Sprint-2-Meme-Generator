@@ -1,6 +1,9 @@
 main {
     padding-top: 20px;
     padding-bottom: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-gallery h1 {
