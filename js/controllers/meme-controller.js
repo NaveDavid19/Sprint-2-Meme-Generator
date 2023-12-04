@@ -11,8 +11,8 @@ function renderMeme() {
     gCtx.reset()
     renderImage(meme)
     renderLines(meme, imgUrl)
+    debugger
     renderRectangles(meme.lines[meme.selectedLineIdx])
-    console.log(meme.selectedLineIdx);
     renderFunctions()
 }
 
@@ -42,7 +42,6 @@ function calcRectPos(line) {
 
 function renderRectangles(line) {
     let { rectHeight, rectWidth, x, y } = calcRectPos(line)
-
     gCtx.rect(x, y, rectWidth, rectHeight);
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black';
