@@ -11,7 +11,7 @@ function renderMeme() {
     gCtx.reset()
     renderImage(meme)
     renderLines(meme, imgUrl)
-    debugger
+
     renderRectangles(meme.lines[meme.selectedLineIdx])
     renderFunctions()
 }
@@ -30,7 +30,7 @@ function calcRectPos(line) {
     let padding = 10;
     let rectWidth = textWidth + 2 * padding;
     let rectHeight = textHeight + 2 * padding;
-    let x = (gElCanvas.width - rectWidth) / 2;
+    let x = line.posX - textWidth / 2 - padding;
     let y = line.posY - textHeight / 2 - padding;
     return {
         rectHeight,
