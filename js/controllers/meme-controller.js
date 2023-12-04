@@ -12,6 +12,7 @@ function renderMeme() {
     renderImage(meme)
     renderLines(meme, imgUrl)
     renderRectangles(meme.lines[meme.selectedLineIdx])
+    console.log(meme.selectedLineIdx);
     renderFunctions()
 }
 
@@ -49,12 +50,9 @@ function renderRectangles(line) {
 }
 
 function renderLines(meme, imgUrl) {
-    if (meme.lines.length === 0) return
-    if (meme.lines[gLineId].txt && imgUrl) {
-        meme.lines.forEach(function (lineProp) {
-            drawText(lineProp.txt, lineProp.posX, lineProp.posY, lineProp.size, lineProp.color)
-        })
-    }
+    meme.lines.forEach(function (lineProp) {
+        drawText(lineProp.txt, lineProp.posX, lineProp.posY, lineProp.size, lineProp.color)
+    })
 }
 
 function getImg(imgId) {
@@ -130,37 +128,6 @@ function onAlignLeft(lineId) {
     renderMeme()
 }
 
-// function renderFunctions() {
-let meme = getMeme()
-let elFunctions = document.querySelector('.functions div')
-let currLine = findLine(meme.selectedLineIdx)
-
-let strHtml = `<div class="main-functions" data-id="${currLine.id}">
-    <div>
-    <input type="text" name="add-text" placeholder="Add Text Here" value="${currLine.txt === ' ' ? '' : `${currLine.txt}`}"onchange="onTextChange(this,${currLine.id})">
-    <button title="Switch-line" onclick="onSwitchLine()"><img
-    src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-    <button title="Add-line" onclick="onAddLine()"><img src="ICONS/add.png"></button>
-    <button title="Delete-line" onclick="onDeleteLine(${currLine.id})"><img src="ICONS/trash.png"></button>
-    </div>
-    <div>
-    <button title="Increase-font" onclick="onincreaseFont(${currLine.id})"><img src="ICONS/increase font - icon.png"></button>
-    <button title="Decrease-font" onclick="onDecreaseFont(${currLine.id})"><img src="ICONS/decrease font - icon.png"></button>
-    <button title="Align-left" onclick="onAlignLeft(${currLine.id})"><img src="ICONS/align-to-left.png"></button>
-    <button title="Align-center" onclick="onAlignCenter(${currLine.id})"><img src="ICONS/align-to-center.png"></button>
-    <button title="Align-right" onclick="onAlignRight(${currLine.id})"><img src="ICONS/align-to-right.png"></button>
-    </div>
-    <div>
-    <button title="Position-up" onclick="onPositionUp(${currLine.id})"><img src="ICONS/up-arrow-black.png"></button>
-    <button title="Position-down" onclick="onPositionDown(${currLine.id})"><img src="ICONS/down-arrow.png"></button>
-    <input title="Select-color" type="color" value="${currLine.color}" name="select-color" onchange="onChangeColor(this,${currLine.id})">
-    <button title="Add-emoji" onclick="onEmojiClick(${currLine.id})"><img src="ICONS/emoji-logo.png"></button>
-    </div>
-</div>`
-
-elFunctions.innerHTML = strHtml
-// }
-
 function onMouseMove(ev) {
     const { offsetX, offsetY } = ev;
     const clickedText = gMeme.lines.find(line => {
@@ -191,7 +158,7 @@ function drawText(text, x, y, size, color) {
 function renderFunctions() {
     let meme = getMeme()
     let elFunctions = document.querySelector('.functions div')
-    let currLine = findLine(meme.selectedLineIdx)
+    let currLine = meme.lines[meme.selectedLineIdx]
 
     let strHtml = `<div class="main-functions" data-id="${currLine.id}">
     <div class="header-functions column">

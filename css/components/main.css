@@ -45,6 +45,12 @@ input[type="text"] {
     width: 100%;
 }
 
+h1 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 23px;
+}
+
 .main-functions {
     display: flex;
     flex-direction: column;

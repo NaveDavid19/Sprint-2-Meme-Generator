@@ -73,6 +73,15 @@
         font-size: 20px;
     }
 
+    .canvas-container {
+        gap: 10px;
+    }
+
+    main {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
     header li {
         padding: 15px 30px;
     }

@@ -73,7 +73,7 @@ function decreaseFont(lineId) {
 }
 
 function addLine() {
-    gMeme.selectedLineIdx++
+    gMeme.selectedLineIdx = gMeme.lines.length
     gLineId++
     gPosY += 40
     gMeme.lines.push(createDefaultLine())
@@ -104,8 +104,8 @@ function fineIdxLine(lineId) {
 
 function deleteLine(lineId) {
     const lineIdx = fineIdxLine(lineId)
+    gPosY = gMeme.lines[lineIdx].posY - 40
     gMeme.lines.splice(lineIdx, 1)
-    gLineId--
     gMeme.selectedLineIdx--
     if (gMeme.lines.length === 0) {
         addLine()
