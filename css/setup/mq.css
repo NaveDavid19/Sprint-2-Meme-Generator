@@ -19,7 +19,7 @@
         padding: 20px 30px;
     }
 
-    canvas {
+    #canvas {
         height: 350px;
         width: 300px;
     }
@@ -50,7 +50,7 @@
         padding: 20px 30px;
     }
 
-    canvas {
+    #canvas {
         height: 350px;
         width: 300px;
     }
@@ -90,7 +90,7 @@
         width: 250px;
     }
 
-    canvas {
+    #canvas {
         height: 250px;
         width: 300px;
     }
